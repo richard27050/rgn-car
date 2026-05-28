@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espaço Secreto da Agatha ✨</title>
+    <style>
+        /* Design Moderno: Tons de Terracota, Dourado e Preto */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #1a1512; /* Fundo escuro aconchegante */
+            color: #f5efe6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Cabeçalho Estiloso */
+        header {
+            background: linear-gradient(135deg, #4a2c11 0%, #b87333 100%); /* Bronze/Terracota */
+            color: #ffffff;
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 4px solid #d4af37; /* Detalhe em Dourado */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .stars-decor {
+            font-size: 1.3rem;
+            margin-top: 15px;
+            color: #d4af37;
+            letter-spacing: 5px;
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .card-intro {
+            background: #2a221c;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            border-left: 5px solid #d4af37;
+        }
+
+        /* Botão Principal de Ativação */
+        .btn-agatha {
+            background-color: #3a3028;
+            color: #f5efe6;
+            border: 2px solid #b87333;
+            padding: 30px 40px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .btn-agatha:hover {
+            background-color: #d4af37;
+            color: #1a1512;
+            border-color: #d4af37;
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-agatha span.icon {
+            font-size: 2.5rem;
+        }
+
+        /* Pop-up Estilo Game/Notificação */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background-color: #2a221c;
+            border: 2px solid #d4af37;
+            width: 90%;
+            max-width: 500px;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            transform: translateY(50px);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: translateY(0);
+        }
+
+        .modal-box h2 {
+            color: #d4af37;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .modal-box p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #f5efe6;
+            margin-bottom: 25px;
+        }
+
+        /* Caixa de exibição do resultado do sorteio */
+        .roleta-box {
+            background: #1a1512;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #fff;
+            border: 1px dashed #b87333;
+            margin-bottom: 25px;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .action-btn {
+            background-color: #b87333;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .action-btn:hover {
+            background-color: #d4af37;
+            color: #1a1512;
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #8a7a70;
+            font-size: 0.95rem;
+            border-top: 1px solid #3a3028;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Agatha Space ✨</h1>
+        <p>sorteando o futuro.</p>
+        <div class="stars-decor">✦ 🎲 ✦ 👑 ✦ 🎲 ✦</div>
+    </header>
+
+    <div class="container">
+        <div class="card-intro">
+            A sua sorte vai decidir onde vamos criar juntos novas memorias.
+        </div>
+        
+        <button class="btn-agatha" onclick="openModal('modal-roleta')">
+            <span class="icon">🎲</span>
+            <span>Girar a Roleta de Rolês</span>
+        </button>
+    </div>
+
+    <div class="modal-overlay" id="modal-roleta">
+        <div class="modal-box">
+            <h2>🎲 O Destino Decidiu!</h2>
+            <p>Clique no botão para rodar e sortear o nosso plano:</p>
+            
+            <div class="roleta-box" id="resultado-roleta">Clique para sortear... 👇</div>
+            
+            <button class="action-btn" onclick="rodarRoleta()" style="margin-right: 10px; background-color: #d4af37; color: #1a1512;">Girar Sorteio 🔄</button>
+            <button class="action-btn" onclick="closeModal('modal-roleta')">Gostei!</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Feito para tirar um sorriso Seu.</p>
+    </footer>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.getElementById('resultado-roleta').innerText = "Clique para sortear... 👇";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // Função de sorteio aleatório
+        function rodarRoleta() {
+            const opcoes = [
+                " Comer um lanche gostoso no tiro certo",
+                " batata com cheddar e bacon e o novo lanche do bk",
+                " ir no cinema ",
+                " comer no outback",
+                " andar de kart",
+                "surpresa"
+            ];
+            
+            const display = document.getElementById('resultado-roleta');
+            display.innerText = "Sorteando o destino...";
+            
+            // Pequeno delay para gerar aquele suspense divertido
+            setTimeout(() => {
+                const indiceAleatorio = Math.floor(Math.random() * opcoes.length);
+                display.innerText = opcoes[indiceAleatorio];
+            }, 600);
+        }
+
+        // Fecha se o usuário clicar na área escura fora do pop-up
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+            }
+        }
+    </script>
+
+</body>
+</html>
